@@ -1,0 +1,1 @@
+User.create!(name: "Le", email: "letran@letran.com", password: "lelele")
