@@ -1,9 +1,9 @@
 ## LOGIN/LOGOUT
-get '/login' do
+get '/signin' do
 	erb :"/sessions/login"
 end
 
-post '/login' do
+post '/signin' do
 	user = User.find_by(email: params[:email])
 	if user && user.authenticate(params[:password])
 		session[:user_id] = user.id
@@ -14,10 +14,6 @@ post '/login' do
 	end
 end
 
-delete '/sessions/:id' do
-	session[:user_id] = nil
-	redirect '/'
-end
 
 
 ## SIGN UP
@@ -36,5 +32,9 @@ post '/signup' do
 	end
 end
 
+get '/signout' do
+	session[:user_id] = nil
+	redirect '/'
+end
 
 

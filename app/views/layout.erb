@@ -22,13 +22,9 @@
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <% if current_user %>
-      <p>Hello <%= current_user.name %>
-      <form id="sign-out" action="/sessions/<%= current_user.id %>" method="post">
-        <input name="_method" type="hidden" value="delete" />
-        <input type="submit" value="Sign Out">
-      </form></p>
+      <p>Hello, <%= current_user.name %> <a href="/signout">Sign Out</a></p>
       <% else %>
-      <a href="/login">Log In</a>
+      <a href="/signin">Sign In</a>
       <a href="/signup">Sign Up</a>
       <% end %>
     </div>
