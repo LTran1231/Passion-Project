@@ -18,6 +18,21 @@
   <title></title>
 </head>
 <body>
-  <%= yield %>
+  <nav>
+    <% if @current_user %>
+    Hello, <%= p sessios[:user_id] %> 
+    <a href="/logout">Logout</a>
+    <% else %>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+    <% end %>
+
+
+  </nav>
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+
 </body>
 </html>

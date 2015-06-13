@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }
 
 
-
   def password
     @password ||= Password.new(password_digest)
   end
@@ -25,3 +24,11 @@ class User < ActiveRecord::Base
   end
 
 end
+
+# HAS_SECURE_PASSWORD
+# password must be presence
+# password length must be less than or equal to 72 characters
+# confirmation of password that is build in with "password_confirmation" attribute
+
+
+

@@ -1,12 +1,3 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
-
-### Purpose
-The Sinatra Skeleton:
-
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
-
 ### Quickstart
 
 1.  `bundle install`
@@ -27,4 +18,57 @@ We would love for you to help make the skeleton more awesome, There are three wa
 2. Submit a pull request for a bug fix or enhancement!
 3. Code review an open pull request!
 
-Be prepared to give and receive specific, actionable, and kind feedback!
+
+helpers do
+  # This will return the current user, if they exist
+  # Replace with code that works with your application
+  def current_user
+    if session[:user_id]
+      @current_user ||= User.find_by_id(session[:user_id])
+    end
+  end
+
+  # Returns true if current_user exists, false otherwise
+  def logged_in?
+    !current_user.nil?
+  end
+end
+
+
+
+===========================================================================
+### Organize MVC
+
+app
+| - controllers
+  | - post.rb
+  | - profile.rb
+  | - index.rb
+
+app
+| - views
+  | - articles
+    | - edit.erb
+    | - new.erb
+    | - show.erb
+    | - index.erb
+  | - categories
+    | - index.erb
+    | - show.erb
+
+===========================================================================
+### User: session Route
+
+HTTP		 request			URL				Action								Named route	Purpose
+GET			/users/1			show			user_path(user)				page to show user profile
+GET			/signup   		new				new_user_path					page to make a new user (signup)
+POST		/users				create		users_path						create a new user (member)
+GET			/users/1/edit	edit			edit_user_path(user)	page to edit user with id 1 edit your profile
+PATCH		/users/1			update		user_path(user)				update user (submit your changes)
+DELETE	/users/1			destroy		user_path(user)				delete user (this site sucks, Don't want to be a member of this club)
+
+===========================================================================
+
+HTTP		 request			URL				Action								Named route	Purpose
+GET			/index				index			home							 		main page
+
