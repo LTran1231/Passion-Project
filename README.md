@@ -47,12 +47,12 @@ app
 
 app
 | - views
-  | - articles
+  | - sessions
     | - edit.erb
     | - new.erb
     | - show.erb
     | - index.erb
-  | - categories
+  | - users
     | - index.erb
     | - show.erb
 

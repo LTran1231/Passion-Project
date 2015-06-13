@@ -1,4 +1,4 @@
-helpers do 
+helpers do
 
   # return the current user, if they exist
 
@@ -7,11 +7,11 @@ helpers do
 			@current_user ||= User.find(session[:user_id])
 		end
 	end
-		
-	#looged_in? is true if current user is not nil
-	def logged_in?
-		!current_user.nil?
-	end
+
+	#logged_in? is true if current user is not nil
+	# def login(user)
+	# 	session[:user_id] = user.id
+	# end
 end
 
 
