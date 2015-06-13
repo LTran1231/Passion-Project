@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
 	before_save { email.downcase! }
 
 	validates :name, presence: true,  length: { maximum: 50 }
-	
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-	validates :email, presence:   true, 
+	validates :email, presence:   true,
 										format: 	  { with: VALID_EMAIL_REGEX },
 										uniqueness: { :case_sensitive => false }
 
@@ -30,5 +30,15 @@ end
 # password length must be less than or equal to 72 characters
 # confirmation of password that is build in with "password_confirmation" attribute
 
+# Methods included in Active Record
+# user.save                                                       # => false, password required
+# user.password = 'mUc3m00RsqyRe'
+# user.save                                                       # => false, confirmation doesn't match
+# user.password_confirmation = 'mUc3m00RsqyRe'
+# user.save                                                       # => true
+# user.authenticate('notright')                                   # => false
+# user.authenticate('mUc3m00RsqyRe')                              # => user
+# User.find_by(name: 'david').try(:authenticate, 'notright')      # => false
+# User.find_by(name: 'david').try(:authenticate, 'mUc3m00RsqyRe') # => user
 
 

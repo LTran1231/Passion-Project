@@ -74,3 +74,21 @@ GET     /login     login_path     new page for a new session (login)
 POST    /login     login_path     create  create a new session (login)
 DELETE  /logout    logout_path    destroy delete a session (log out)
 ```
+
+===========================================================================
+### local port error
+
+TCPServer Error: Address already in use
+```
+lsof -wni tcp:9393
+kill -9 <PID>
+
+===========================================================================
+###
+
+
+
+
+
+
+

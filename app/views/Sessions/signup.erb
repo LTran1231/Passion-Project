@@ -1,0 +1,22 @@
+<div class="container">
+  <% if @errors %>
+    <% @errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+  <form action="/users/new" method="post">
+    Name<br>
+    <input type="text" name="name"/><br>
+    <br>
+    Email<br>
+    <input type="text" name="email"/><br>
+    <br>
+    Password<br>
+    <input type="password" name"password"/><br>
+    <br>
+    Confirmation<br>
+    <input type="password" name"password_confirmation"/><br>
+    <br>
+    <input type="submit" value="Create my account"/></br>
+  </form>
+</div>
