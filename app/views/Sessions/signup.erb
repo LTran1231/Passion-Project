@@ -4,18 +4,18 @@
       <li><%= message %></li>
     <% end %>
   <% end %>
-  <form action="/users/new" method="post">
+  <form action="/signup" method="post">
     Name<br>
-    <input type="text" name="name"/><br>
+    <input type="text" name="user[name]"/><br>
     <br>
     Email<br>
-    <input type="text" name="email"/><br>
+    <input type="text" name="user[email]"/><br>
     <br>
     Password<br>
-    <input type="password" name"password"/><br>
+    <input type="password" name="user[password]"/><br>
     <br>
     Confirmation<br>
-    <input type="password" name"password_confirmation"/><br>
+    <input type="password" name="user[password_confirmation]"/><br>
     <br>
     <input type="submit" value="Create my account"/></br>
   </form>

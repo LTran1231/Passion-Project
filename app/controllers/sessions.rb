@@ -5,7 +5,7 @@ end
 
 post '/login' do
 	user = User.find_by(email: params[:email])
-	if user && (user.password == params[:password])
+	if user && user.authenticate(params[:password])
 		session[:user_id] = user.id
 		redirect '/'
 	else
@@ -15,30 +15,26 @@ post '/login' do
 end
 
 delete '/sessions/:id' do
-  session[:user_id] = nil
-  redirect '/'
+	session[:user_id] = nil
+	redirect '/'
 end
 
 
 ## SIGN UP
 get '/signup' do
-  erb :"/sessions/signup"
+	erb :"/sessions/signup"
 end
 
-post '/users/new' do
-	@user = User.new(name: params[:name],
-									 email: params[:email],
-									 password: params[:password],
-									 password_confirmation: params[:password_confirmation])
+post '/signup' do
+	@user = User.new(params[:user])
 	if @user.save
-		current_user
+		session[:user_id] = @user.id
 		redirect '/'
 	else
 		@errors = @user.errors.full_messages
 		erb :"/sessions/signup"
 	end
 end
-
 
 
 
