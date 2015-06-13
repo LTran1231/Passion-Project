@@ -6,6 +6,7 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/normalize.css">
   <!--
     application.css is where you put your styles
@@ -18,17 +19,20 @@
   <title></title>
 </head>
 <body>
-  <nav>
-    <% if @current_user %>
-    Hello, <%= p sessios[:user_id] %> 
-    <a href="/logout">Logout</a>
-    <% else %>
-    <a href="/login">Login</a>
-    <a href="/signup">Signup</a>
-    <% end %>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+      <% if @current_user %>
+      Hello, <%= p session[:user_id] %> 
+      <a href="/logout">Log Out</a>
+      <% else %>
+      <a href="/login">Log In</a>
+      <a href="/signup">Sign Up</a>
+      <% end %>
+  </div>
+</nav>
 
 
-  </nav>
+
   
   <div class="container">
     <%= yield %>

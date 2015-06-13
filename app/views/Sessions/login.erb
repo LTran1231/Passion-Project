@@ -1,9 +1,13 @@
+
+
+
 <div class="container">
-	
-	<form action="/session" method="post">
-		<input type="text" name="user[email]" placeholder="Email">
-		<input type="text" name"user[password]" placeholder="Password">
-		<input type="submit" value="Submit">
-	</form>
+	<% if @errors %>
+	<p><%= @errors %></p>
+	<% end %>
+
+	<p><%= erb :"Sessions/_form", :locals => { action: "/login", value: "Log In" } %></p>
+
+	<p>New user?  <a href="/signup">  Sign up</a></p>
 
 </div>
