@@ -1,4 +1,12 @@
+<% if current_user %>
 <a href="/profile/<%= current_user.name %>/edit">Edit My Profile</a>
-<p>
-  List of posts
-</p>
+<% end %>
+<p>Name: <%= current_user.name %></p>
+<p>Email: <%= current_user.email %></p>
+<p>I Am <%= current_user.gender %></p>
+<p>From: <%= current_user.hometown %></p>
+<p>Places i've been ... <%= current_user.travel_destinations %></p>
+<p><%= current_user.description %></p>
+
+
+

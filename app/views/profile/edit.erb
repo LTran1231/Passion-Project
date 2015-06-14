@@ -1,15 +1,63 @@
-<form action="/profile/:name/edit" method="post">
+<!-- edit field is not fully working-->
+<!-- need to add in birthday -->
+
+<form action="/profile/<%= current_user.name %>/edit" method="post">
+  <input type="hidden" name="_method" value="put" >
   <div class="form-group">
     <label for="name">Username</label>
-    <input type="name" class="form-control" id="name" placeholder="<%= @user.name %>">
+    <input type="text" class="form-control" name="user[name]" value="<%= @user.name %>">
   </div>
+
+  <div class="form-group">
+    <label for="gender">I Am</label>
+    <select class="form-control" name="user[gender]" value="<%= @user.gender %>">
+      <option value="">Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+<!--     <div class="form-group">
+    <label for="birthday">Birthday</label>
+    <select class="form-control" name="user[birthday]">
+      <option value="">Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div> -->
+
+
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" class="form-control" id="email" placeholder="<%= @user.email %>">
+    <input type="text" class="form-control" value="<%= @user.email %>">
   </div>
+
   <div class="form-group">
-    <label for="content">Describe Yourself</label>
-    <textarea class="form-control" rows="3"></textarea>
+    <label for="hometown">Home Town</label>
+    <input type="text" class="form-control" name="user[hometown]" value="<%= @user.hometown %>" placeholder="e.g Paris,FR / Brookly,NY / DaNang, VN">
+  </div>
+
+  <div class="form-group">
+    <label for="travel_destinations">List of Places You've Been </label>
+    <input type="text" class="form-control" name="user[travel_destinations]" value="<%= @user.travel_destinations %>" placeholder="eg. San Francisco, CA ">
+  </div>
+
+  <div class="form-group">
+    <label for="content">About Yourself</label>
+    <textarea type="text" class="form-control" rows="3" name="user[description]" value="<%= @user.description %>"></textarea>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+
+  <form action="/profile/<%= current_user.name %>" method="get">
+    <button type="submit" class="btn btn-default">Cancel</button>
+  </form>
+
+
+
+
+
+
+
