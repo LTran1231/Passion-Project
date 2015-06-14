@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	include BCrypt
 
+  has_many :posts
+
 	before_save { email.downcase! }
 
 	validates :name, presence: true,  length: { maximum: 50 }
