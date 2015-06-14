@@ -1,8 +1,9 @@
 <!-- edit field is not fully working-->
 <!-- need to add in birthday -->
 
-<form action="/profile/<%= current_user.name %>/edit" method="post">
+<form action="/profile/<%= current_user.id %>/edit" method="post" id="edit_profile">
   <input type="hidden" name="_method" value="put" >
+
   <div class="form-group">
     <label for="name">Username</label>
     <input type="text" class="form-control" name="user[name]" value="<%= @user.name %>">

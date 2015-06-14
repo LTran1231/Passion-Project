@@ -22,7 +22,7 @@
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <% if current_user %>
-      Hello, <a href="/profile/<%= current_user.name %>"><%= current_user.name %></a>
+      Hello, <a href="/profile/<%= current_user.id %>"><%= current_user.name %></a>
       <a href="/signout">Sign Out</a>
       <% else %>
       <a href="/signin">Sign In</a>
@@ -32,9 +32,9 @@
   </nav>
 
   <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/">Home</a></li>
     <% if current_user %>
-    <li role="presentation"><a href="/profile/<%= current_user.name %>">Profile</a></li>
+    <li role="presentation"><a href="/profile/<%= current_user.id %>">Profile</a></li>
     <li role="presentation"><a href="#">Messages</a></li>
     <% end %>
   </ul>

@@ -1,10 +1,15 @@
-get '/post/:name/new' do
-  user = User.where(name: params[:name]).first
+get '/posts/:id/new' do
+  user = User.where(id: params[:id]).first
   if user == current_user
     erb :"/posts/new"
   end
 end
 
-post '/post/:name/new' do
-  "hello"
+post '/posts/:id/new' do
+  user = User.find(params[:id])
+  pin = params[:pin]
+  user.posts.new(params[:post], params[pin])
+  user.save
+
+
 end

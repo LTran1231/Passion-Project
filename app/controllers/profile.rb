@@ -1,17 +1,17 @@
 
-get '/profile/:name' do
-  @user = User.where(name: params[:name]).first
+get '/profile/:id' do
+  @user = User.where(id: params[:id]).first
   erb :"/profile/show"
 end
 
-get '/profile/:name/edit' do
-  @user = User.find_by(name: params[:name])
+get '/profile/:id/edit' do
+  @user = User.find_by(id: params[:id])
   erb :"/profile/edit"
 end
 
-put '/profile/:name/edit' do
+put '/profile/:id/edit' do
   current_user.update(params[:user])
-  redirect "/profile/#{current_user.name}"
+  redirect "/profile/#{current_user.id}"
 end
 
 # create post
