@@ -38,7 +38,7 @@ end
 
 ===========================================================================
 ### Organize MVC
-
+```
 app
 | - controllers
   | - post.rb
@@ -48,31 +48,31 @@ app
 app
 | - views
   | - sessions
-    | - edit.erb
-    | - new.erb
-    | - show.erb
-    | - index.erb
+    | - signin.erb
+    | - signout.erb
+    | - signup.erb
   | - users
-    | - index.erb
-    | - show.erb
+    | - edit.erb
+    | - .erb
+```
+===========================================================================
+```
+HTTP    request    URL            Named route   Action Purpose
+GET     /signin    login_path     new page     for a new session (signin)
+POST    /signin    login_path     create       form to sign in (signin)
+GET     /signout   logout_path    destroy      delete a session (Sign out)
 
-===========================================================================
-### User: session Route
-```
-HTTP		 request			URL				Action								Named route	Purpose
-GET			/users/1			show			user_path(user)				page to show user profile
-GET			/signup   		new				new_user_path					page to make a new user (signup)
-POST		/users				create		users_path						create a new user (member)
-GET			/users/1/edit	edit			edit_user_path(user)	page to edit user with id 1 edit your profile
-PATCH		/users/1			update		user_path(user)				update user (submit your changes)
-DELETE	/users/1			destroy		user_path(user)				delete user (this site sucks, Don't want to be a member of this club)
+GET			/signup    new			new_user_path			page to make a new user (signup)
+POST		/signup	   create		users_path				create a new user (member)
 ```
 ===========================================================================
+### Profile: session Route
 ```
-HTTP    request    URL            Named route Action Purpose
-GET     /login     login_path     new page for a new session (login)
-POST    /login     login_path     create  create a new session (login)
-DELETE  /logout    logout_path    destroy delete a session (log out)
+HTTP     request      URL       Action                Named route Purpose
+GET     /users/1      show      user_path(user)       page to show user profile
+GET     /users/1/edit edit      edit_user_path(user)  page to edit user with id 1 edit your profile
+PATCH   /users/1      update    user_path(user)       update user (submit your changes)
+DELETE  /users/1      destroy   user_path(user)       delete user
 ```
 
 ===========================================================================

@@ -1,6 +1,6 @@
 ## LOGIN/LOGOUT
 get '/signin' do
-	erb :"/sessions/login"
+	erb :"/sessions/signin"
 end
 
 post '/signin' do
@@ -10,8 +10,13 @@ post '/signin' do
 		redirect '/'
 	else
 		@errors = "Invalid email/password."
-		erb :"/sessions/login"
+		erb :"/sessions/signin"
 	end
+end
+
+get '/signout' do
+	session[:user_id] = nil
+	redirect '/'
 end
 
 
@@ -32,9 +37,6 @@ post '/signup' do
 	end
 end
 
-get '/signout' do
-	session[:user_id] = nil
-	redirect '/'
-end
+
 
 
