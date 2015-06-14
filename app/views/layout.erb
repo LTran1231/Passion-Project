@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/normalize.css">
   <!--
     application.css is where you put your styles
@@ -18,6 +19,32 @@
   <title></title>
 </head>
 <body>
-  <%= yield %>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <% if current_user %>
+      Hello, <a href="/profile/<%= current_user.name %>"><%= current_user.name %></a>
+      <a href="/signout">Sign Out</a>
+      <% else %>
+      <a href="/signin">Sign In</a>
+      <a href="/signup">Sign Up</a>
+      <% end %>
+    </div>
+  </nav>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <% if current_user %>
+    <li role="presentation"><a href="/profile/<%= current_user.name %>">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+    <% end %>
+  </ul>
+
+
+
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
 </body>
 </html>
