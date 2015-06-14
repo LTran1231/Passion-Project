@@ -1,12 +1,12 @@
-<% if current_user %>
-<a href="/profile/<%= current_user.name %>/edit">Edit My Profile</a>
+<% if @user == current_user %>
+<li><a href="/profile/<%= current_user.name %>/edit">Edit My Profile</a></li>
 <% end %>
-<p>Name: <%= current_user.name %></p>
-<p>Email: <%= current_user.email %></p>
-<p>I Am <%= current_user.gender %></p>
-<p>From: <%= current_user.hometown %></p>
-<p>Places i've been ... <%= current_user.travel_destinations %></p>
-<p><%= current_user.description %></p>
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>I Am <%= @user.gender %></p>
+<p>From: <%= @user.hometown %></p>
+<p>Places i've been ... <%= @user.travel_destinations %></p>
+<p><%= @user.description %></p>
 
 
 

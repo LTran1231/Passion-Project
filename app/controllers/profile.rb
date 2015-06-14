@@ -1,9 +1,6 @@
 
-# show user posts
-
-# show current_user profile
 get '/profile/:name' do
-  @user = User.find_by(name: params[:name])
+  @user = User.where(name: params[:name]).first
   erb :"/profile/show"
 end
 
