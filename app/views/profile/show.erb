@@ -1,13 +1,37 @@
-<% if @user == current_user %>
-<li><a href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
-<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
-<% end %>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>I Am <%= @user.gender %></p>
-<p>From: <%= @user.hometown %></p>
-<p>Places i've been ... <%= @user.travel_destinations %></p>
-<p><%= @user.description %></p>
+
+<div class="pull-left">
+	<ul class="list-unstyled">
+		<% if @user == current_user %>
+		<li><a href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
+		<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
+		<% end %>
+		<li>Name: <%= @user.name %></li>
+		<li>Email: <%= @user.email %></li>
+		<li>Gender <%= @user.gender %></li>
+		<li>From: <%= @user.hometown %></li>
+		<li>Places i've been ... <%= @user.travel_destinations %></li>
+		<li><%= @user.description %></li>
+	</ul>
+</div>
 
 
+<div class="pull-left">
+	<% sort_posts_by_date(@user.posts).each do |post| %>
+	<dl class="dl-horizontal">
+		<dt>Title</dt>
+		<dd><%= post.title %> 
+		<p>posted at: <%= Date.parse(post.created_at.to_s) %></p></dd>
+		<dt>City</dt>
+		<dd><%= post.pin.city if !post.pin_id.nil? %></dd>
+		<dt>Country</dt>
+		<dd><%= post.pin.country if !post.pin_id.nil? %></dd>
+		<dt>Country</dt>
+		<dd><%= post.pin.country if !post.pin_id.nil? %></dd>
+		<dt>Travel date</dt>
+		<dd><%= post.travel_date %></dd>
+		<dt>My experience</dt>
+		<dd><%= post.content %></dd>
+	</dl>
+	<% end %>
+</div>
 

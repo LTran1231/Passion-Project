@@ -8,10 +8,10 @@ helpers do
 		end
 	end
 
-	#logged_in? is true if current user is not nil
-	# def login(user)
-	# 	session[:user_id] = user.id
-	# end
+	 def sort_posts_by_date(posts)
+  	posts.all.order(created_at: :DESC) 
+  end
+
 end
 
 
