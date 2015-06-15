@@ -1,0 +1,15 @@
+
+<!-- list all the posts about the same city or country -->
+
+
+<div class="pull-left">
+  <ul class="list-unstyled">
+    <% if @search_city %> 
+    <li><%= @search_city.city.posts %></li>
+    <p><% @search_country.posts.each do |post| %></p>
+    <li><%= post.title %></li>
+    <% end %> 
+    <% end %> 
+
+  </ul>
+</div>
