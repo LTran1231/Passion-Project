@@ -17,6 +17,10 @@
 
 <div class="pull-left">
 	<% sort_posts_by_date(@user.posts).each do |post| %>
+	 <% if @user == current_user %>
+	<%= erb :"/sessions/_button", :layout => false, :locals => { action: "/posts/:id/edit", value: "Edit" } %>
+
+		<% end %>
 	<dl class="dl-horizontal">
 
 		<dt>Title</dt>

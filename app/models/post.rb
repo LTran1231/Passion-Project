@@ -5,8 +5,4 @@ class Post < ActiveRecord::Base
 
   validates :title, :pin_id, presence: true
 
-  def sort_posts_by_date(posts)
-  	posts.all.order(created_at: :DESC) 
-  end
-
 end
