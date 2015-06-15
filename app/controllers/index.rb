@@ -1,14 +1,14 @@
 get '/' do
-	erb :"/posts/search"
+	erb :index
 end
 
 post '/search' do
-	@search_city = Pin.where(city: params[:city]).first
-	@search_country = Pin.where(country: params[:country]).first
+	@search_city = Pin.find_by(city: params[:city])
+	@search_country = Pin.find_by(country: params[:country])
 	if @search_city || @search_country 
-	redirect "/"
+	erb :index
 else
-	@errors = "There is no post on the location you are searching."
+	@error = "There is no post on the location you are searching."
 	erb :index
 end
 end
