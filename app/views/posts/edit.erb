@@ -1,0 +1,19 @@
+	<form action="/posts/<%= @post.id %>/edit" method="POST" id="post">
+		<input type="hidden" name="_method" value="PUT">
+		<div class="form-group">
+			<br/><button type="submit" class="btn btn-default">Submit</button><br/>
+			<br/><label for="title">Title</label>
+			<input type="text" class="form-control" name="post[title]" value="<%= @post.title %>">
+
+			<br/><label for="location">Location</label>
+			<input type="text" class="form-control" name="pin[city]" value="<%= @post.pin.city %>">
+			<br/><input type="text" class="form-control" name="pin[country]" value="<%= @post.pin.country %>">
+
+			<br/><label for="travel_date">Travel</label>
+			<input type="text" class="form-control" name="post[travel_date]" value="<%= @post.travel_date %>">
+		</div>
+	</form>
+
+	<label for="content">Content</label>
+	<textarea class="form-control" id="post"rows="10" name="post[content]" value="<%= @post.content %>"></textarea>
+</div>

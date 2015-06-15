@@ -16,3 +16,19 @@ post '/posts/:id/new' do
   	erb :"/posts/new"
   end
 end
+
+get '/posts/:id/edit' do
+  @post = Post.find(params[:id])
+
+
+  erb :"/posts/edit"
+end
+
+put '/posts/:id/edit' do
+	post = Post.find(params[:id])
+  pin = Pin.find_or_create_by(params[:pin])
+  post.update(params[:post].merge!(pin_id: pin.id)) 
+
+  redirect "/profile/#{current_user.id}"
+end
+
