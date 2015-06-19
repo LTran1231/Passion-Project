@@ -9,7 +9,7 @@
 		<li>Email: <%= @user.email %></li>
 		<li>Gender <%= @user.gender %></li>
 		<li>From: <%= @user.hometown %></li>
-		<li>Places i've been ... <%= @user.travel_destinations %></li>
+		<li>Places i've been: <%= @user.travel_destinations %></li>
 		<li><%= @user.description %></li>
 	</ul>
 </div>
@@ -29,13 +29,13 @@
 
 			<dt>Title</dt>
 			<dd><%= post.title %> 
-			<p>posted at: <%= Date.parse(post.created_at.to_s) %></p></dd>
+			<p>posted at: <%= Date.parse(post.updated_at.to_s) %></p></dd>
 
 			<dt>City</dt>
-			<dd><%= post.pin.city if !post.pin_id.nil? %></dd>
+			<dd><%= post.city.city if !post.city_id.nil? %></dd>
 
 			<dt>Country</dt>
-			<dd><%= post.pin.country if !post.pin_id.nil? %></dd>
+			<dd><%= post.country.country if !post.country_id.nil? %></dd>
 
 			<dt>Travel date</dt>
 			<dd><%= post.travel_date %></dd>

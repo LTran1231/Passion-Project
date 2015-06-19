@@ -2,15 +2,17 @@ get '/' do
 	erb :index
 end
 
+
+
 post '/search' do
-	@search_city = Pin.find_by(city: params[:city])
-	@search_country = Pin.find_by(country: params[:country])
+	p @search_city = City.where(city: params[:city].downcase).first
+	p @search_country = Country.where(country: params[:country].downcase).first
 	if @search_city || @search_country 
-	erb :index
-else
-	@error = "There is no post on the location you are searching."
-	erb :index
-end
+		erb :index
+	else
+		@error = "There is no post on the location you are searching."
+		erb :index
+	end
 end
 
 # post '/cheers' do

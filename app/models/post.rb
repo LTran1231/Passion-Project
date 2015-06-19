@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  belongs_to :trip
-  belongs_to :pin
+  belongs_to :city
+  belongs_to :country
 
-  validates :title, :pin_id, presence: true
+  validates :title, :city_id, :country_id, presence: true
 
 end

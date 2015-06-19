@@ -13,14 +13,14 @@
 			<input type="text" class="form-control" name="post[title]" placeholder="e.g A trip to Nepal">
 
 			<br/><label for="location">Location</label>
-			<input type="text" class="form-control" name="pin[city]" placeholder="city">
-			<br/><input type="text" class="form-control" name="pin[country]" placeholder="country">
+			<input type="text" class="form-control" name="city" placeholder="Vinales">
+			<br/><input type="text" class="form-control" name="country" placeholder="Cuba">
 
-			<br/><label for="travel_date">Travel</label>
-			<input type="text" class="form-control" name="post[travel_date]" value="mm/dd/yy">
+			<br/><label for="travel_date">Travel Date</label>
+			<input type="text" class="form-control" name="post[travel_date]" value="<%= Date.today %>">
 
 			<label for="content">Content</label>
-			<input class="form-control" rows="10" name="post[content]" placeholder="how was your trip"></textarea>
+			<textarea class="form-control" rows="10" name="post[content]" placeholder="how was your trip"></textarea>
 		</div>
 	</form>
 

@@ -27,8 +27,8 @@
       <option value="Female">Female</option>
       <option value="Other">Other</option>
     </select>
-  </div> -->
-
+  </div>
+ -->
 
   <div class="form-group">
     <label for="email">Email</label>
@@ -47,7 +47,7 @@
 
   <div class="form-group">
     <label for="content">About Yourself</label>
-    <textarea type="text" class="form-control" rows="3" name="user[description]" value="<%= @user.description %>"></textarea>
+    <textarea type="text" class="form-control" rows="3" name="user[description]"><%= @user.description %></textarea>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>

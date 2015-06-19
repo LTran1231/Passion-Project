@@ -1,3 +1,5 @@
+
+
 get '/posts/:id/new' do
   user = User.where(id: params[:id]).first
   if user == current_user
@@ -7,8 +9,9 @@ end
 
 post '/posts/:id/new' do
   user = User.find(params[:id])
-  pin = Pin.find_or_create_by(params[:pin])
-  new_post = user.posts.new(params[:post].merge!(pin_id: pin.id))
+  city = City.find_or_create(city: params[:city])
+  country = Country.find_or_create(country: params[:country])
+  new_post = user.posts.new(params[:post].merge!(city_id: city.id).merge!(country_id: country.id))
   if new_post.save
   	redirect "/profile/#{current_user.id}"
   else
@@ -19,15 +22,15 @@ end
 
 get '/posts/:id/edit' do
   @post = Post.find(params[:id])
-
-
   erb :"/posts/edit"
 end
 
 put '/posts/:id/edit' do
 	post = Post.find(params[:id])
-  pin = Pin.find_or_create_by(params[:pin])
-  post.update(params[:post].merge!(pin_id: pin.id)) 
+  city = City.find_or_create(city: params[:city])
+  country = Country.find_or_create(country: params[:country])
+
+  post.update(params[:post].merge!(city_id: city.id).merge!(country_id: country.id))
 
   redirect "/profile/#{current_user.id}"
 end
