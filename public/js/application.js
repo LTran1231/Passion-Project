@@ -19,10 +19,7 @@ var searchButtonListener = function(){
 		})
 
 		request.done(function(response) {
-			console.log(response);
-			console.log(target)
-					debugger
-			target.next('div').append(response);
+			$('.city').append(response);
 		})
 
 		request.fail(function(response){

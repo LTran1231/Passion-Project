@@ -7,9 +7,9 @@ end
 post '/search' do
 	@search_city = City.where(city: params[:city].downcase).first
 	if @search_city
-		erb :index, locals: { city: @search_city }, layout: false
+		erb :"search/_result", layout: false, locals: { city: @search_city }
 	else
 		@error = "There is no post on the location you are searching."
-    erb :index, locals: { error: @error }, layout: false
+    p @error
 	end
 end

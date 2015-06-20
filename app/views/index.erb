@@ -15,14 +15,7 @@
 
 	<div class="city">
 		<ul class="list-group">
-			<% if @seach_city %>
-				<% @search_city.posts.each do |post| %>
-				<li class="list-results">
-					<a href="/profile/<%= post.user_id %>"><%= post.title %></a>
-					<!-- <span class="vote_count">1</span> -->
-				</li>
-				<% end %>
-			<% end %>
+			<%= erb :"search/_result", locals: {city: @search_city }, layout: false %>
 		</ul>
 	</div>
 </section>
