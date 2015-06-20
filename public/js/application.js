@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 // Search From
 var searchButtonListener = function(){
-	$('.container').on('submit', 'form.search-form', function(event) {
+	$('form.search-form').on('submit', function(event) {
 		event.preventDefault();
 
 
@@ -17,9 +17,11 @@ var searchButtonListener = function(){
 			data_Type: 'Json',
   		data: target.serialize(),
 		})
+
 		request.done(function(response) {
 			console.log(response);
 			console.log(target)
+					debugger
 			target.next('div').append(response);
 		})
 

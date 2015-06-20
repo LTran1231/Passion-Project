@@ -10,6 +10,6 @@ post '/search' do
 		erb :index, locals: { city: @search_city }, layout: false
 	else
 		@error = "There is no post on the location you are searching."
-    erb :index
+    erb :index, locals: { error: @error }, layout: false
 	end
 end
