@@ -10,8 +10,7 @@ end
 post '/posts/:id/new' do
   user = User.find(params[:id])
   city = City.find_or_create(city: params[:city])
-  country = Country.find_or_create(country: params[:country])
-  new_post = user.posts.new(params[:post].merge!(city_id: city.id).merge!(country_id: country.id))
+  new_post = user.posts.new(params[:post].merge!(city_id: city.id))
   if new_post.save
   	redirect "/profile/#{current_user.id}"
   else
@@ -28,9 +27,7 @@ end
 put '/posts/:id/edit' do
 	post = Post.find(params[:id])
   city = City.find_or_create(city: params[:city])
-  country = Country.find_or_create(country: params[:country])
-
-  post.update(params[:post].merge!(city_id: city.id).merge!(country_id: country.id))
+  post.update(params[:post].merge!(city_id: city.id))
 
   redirect "/profile/#{current_user.id}"
 end

@@ -10,7 +10,7 @@ var searchButtonListener = function(){
 
 
 		var target = $(event.target);
-		
+
 		var request = $.ajax({
 			url: target.attr('action'),
 			type: target.attr('method'),
