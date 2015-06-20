@@ -1,34 +1,40 @@
 
 <!-- list all the posts about the same city or country -->
-<div class="center-search-bar">
-	<%= erb :'/search/search', layout: false %>
-</div> 
-
-
+<div class="search">
+<%= erb :"_search", layout: false %> 
+</div>
 
 <div class="center-block">
+	
 	<ul class="list-group">
-		<% if @error %>
-		<li><%= @error%></li>
+		<% if error %>
+		<li><%= error%></li>
 		<% end %> 
+	</ul>
 
-		<% if @search_city %> 
-		<% @search_city.posts.each do |post| %>
-		<li class="list-results">
-			<a href="/profile/<%= post.user_id %>"><%= post.title %></a>
-			<span class="vote_count">1</span>
-		</li>
-		<% end %> 
+	<ul class="list-group">
+		<% if city %> 
+			<% city.posts.each do |post| %>
+			<li class="list-results">
+				<a href="/profile/<%= post.user_id %>"><%= post.title %></a>
+				<!-- <span class="vote_count">1</span> -->
+			</li>
+			<% end %> 
 
-		<% elsif	@search_country %> 
-		<% @search_country.posts.each do |post| %>
-		<li class="list-results">
-			<span class="vote_count">1</span>
-			<a href="/profile/<%= post.user_id %>"><%= post.title %></a>
-		</li>
-		<% end %> 
+			<% elsif country %> 
+			<% country.posts.each do |post| %>
+			<li class="list-results">
+				<!-- <span class="vote_count">1</span> -->
+				<a href="/profile/<%= post.user_id %>"><%= post.title %></a>
+			</li>
+			<% end %> 
 		<% end %> 
 
 	</ul>
 </div>
+
+
+
+
+
 

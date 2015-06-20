@@ -7,6 +7,7 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/css/bootstrap.css">
+
   <link rel="stylesheet" href="/css/normalize.css">
 
   <!--
@@ -21,7 +22,7 @@
 </head>
 <body>
   <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
+    <div class="user">
       <% if current_user %>
       Hello, <a href="/profile/<%= current_user.id %>"><%= current_user.name %></a>
       <a href="/signout">Sign Out</a>
