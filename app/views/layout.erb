@@ -21,27 +21,17 @@
   <title></title>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-static-top">
-    <div class="user">
-      <% if current_user %>
-      Hello, <a href="/profile/<%= current_user.id %>"><%= current_user.name %></a>
-      <a href="/signout">Sign Out</a>
-      <% else %>
-      <a href="/signin">Sign In</a>
-      <a href="/signup">Sign Up</a>
-      <% end %>
-    </div>
-  </nav>
 
-  <ul class="nav nav-tabs">
+  <nav class="nav nav-tabs">
     <li role="presentation"><a href="/">Home</a></li>
     <% if current_user %>
-    <li role="presentation"><a href="/profile/<%= current_user.id %>">Profile</a></li>
-    <!-- <li role="presentation"><a href="#">Messages</a></li> -->
+    <li role="presentation"><a href="/signout">Sign Out</a></li>
+    <li role="presentation"><a href="/profile/<%= current_user.id %>"><%= current_user.name %></a></li>
+    <% else %>
+    <li role="presentation"><a href="/signin">Sign In</a></li>
+    <li role="presentation"><a href="/signup">Sign Up</a></li>
     <% end %>
-  </ul>
-
-
+  </nav>
 
 
   <div class="container">

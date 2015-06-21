@@ -1,3 +1,6 @@
+
+
+/* SEARCH CSS */
 .search {
   /* background: rgba(0,0,0,0.6); */
   /* position: absolute; */
@@ -38,3 +41,33 @@
   margin-left: auto;
   width: 60%;
 }
+
+.list-posts {
+  padding-left: 0;
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.post {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/*
+
+/*.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}*/

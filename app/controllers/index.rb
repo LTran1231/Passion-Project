@@ -9,7 +9,6 @@ post '/search' do
 	if @search_city
 		erb :"search/_result", layout: false, locals: { city: @search_city }
 	else
-		@error = "There is no post on the location you are searching."
-    p @error
+		@error = "There is no post on the location you are searching"
 	end
 end

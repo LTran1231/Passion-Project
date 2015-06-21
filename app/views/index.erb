@@ -1,20 +1,12 @@
 
 <!-- list all the posts about the same city or country -->
 <div class="search">
-<%= erb :"_search", layout: false %>
+	<%= erb :"_search", layout: false %>
 </div>
 
 <section class="search-results">
-	<div class="error">
-		<ul class="list-group">
-			<% if @error %>
-			<li><%= @error%></li>
-			<% end %>
-		</ul>
-	</div>
-
 	<div class="city">
-		<ul class="list-group">
+		<ul class="list-posts">
 			<%= erb :"search/_result", locals: {city: @search_city }, layout: false %>
 		</ul>
 	</div>
