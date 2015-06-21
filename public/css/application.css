@@ -57,18 +57,21 @@
   border: 1px solid #ddd;
 }
 
+/*  PROFILE PAGE */
+.one-fourth-left {
+    width: 25%;   
+    padding-right: 10px;   
+    padding-left: 10px;
+}
 
-/*
+.profile-three-fourth-right {
+    float: left;   
+    padding-right: 10px;   
+    padding-left: 10px;
+    width: 75%;
+}
 
-/*.nav {
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  margin-right: 2px;
-  line-height: 1.42857143;
-  border: 1px solid transparent;
-  border-radius: 4px 4px 0 0;
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-}*/
+.profile-columns {
+    width: 100%;
+    display: flex;
+}

@@ -1,50 +1,42 @@
-
-<div class="pull-left">
-	<ul class="list-unstyled">
-		<% if @user == current_user %>
-		<li><a href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
-		<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
-		<% end %>
-		<li>Name: <%= @user.name %></li>
-		<li>Email: <%= @user.email %></li>
-		<li>Gender <%= @user.gender %></li>
-		<li>From: <%= @user.hometown %></li>
-		<li>Places i've been: <%= @user.travel_destinations %></li>
-		<li><%= @user.description %></li>
-	</ul>
-</div>
-
-<div class="pull-left">
-	<div class="container">
-		<% sort_posts_by_date(@user.posts).each do |post| %>
-		<div class="pull-right">
+<div class="profile-columns">
+	<aside class="one-fourth-left">
+		<ul class="list-unstyled">
 			<% if @user == current_user %>
-			<%= erb :"/sessions/_button", :layout => false, 
-																		:locals => { action: "/posts/#{post.id}/edit", 
-													 											 method: "GET", value: "Edit" } %>
+			<li><a href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
+			<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
+			<% end %>
+			<li>Name: <%= @user.name %></li>
+			<li>Email: <%= @user.email %></li>
+			<li>Gender <%= @user.gender %></li>
+			<li>From: <%= @user.hometown %></li>
+			<li>Places i've been: <%= @user.travel_destinations %></li>
+			<li><%= @user.description %></li>
+		</ul>
+	</aside>
+
+	<article class="profile-three-fourth-right">
+		<div class="panel panel-default">
+			<% sort_posts_by_date(@user.posts).each do |post| %>
+			
+			<div class="panel-heading">
+				<strong><%= post.title %></strong>
+				<p>submitted <%= date_count(post).to_i %> ago</p>
+			</div>
+
+			<div class="pull-left">
+				<% if @user == current_user %>
+				<%= erb :"/sessions/_button", :layout => false, 
+				:locals => { action: "/posts/#{post.id}/edit", 
+				method: "GET", value: "Edit" } %>
+				<% end %>
+			</div>
+
+			<div class="panel-body">
+				<li><%= post.city.city.capitalize if !post.city_id.nil? %>, <%= post.country.country.capitalize if !post.country_id.nil? %></li>
+				<li>Travel on <%= post.travel_date %></li>
+				<li><%= post.content %></li> 
+			</div>
 			<% end %>
 		</div>
-		<dl class="dl-horizontal">
-
-			<dt>Title</dt>
-			<dd><%= post.title %> 
-			<p>posted at: <%= Date.parse(post.updated_at.to_s) %></p></dd>
-
-			<dt>City</dt>
-			<dd><%= post.city.city if !post.city_id.nil? %></dd>
-
-			<dt>Country</dt>
-			<dd><%= post.country.country if !post.country_id.nil? %></dd>
-
-			<dt>Travel date</dt>
-			<dd><%= post.travel_date %></dd>
-
-			<dt>My experience</dt>
-			<dd><%= post.content %></dd> 
-
-		</dl>
-		<% end %>
-
-	</div>
+	</article>
 </div>
-

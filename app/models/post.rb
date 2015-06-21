@@ -5,4 +5,5 @@ class Post < ActiveRecord::Base
 
   validates :title, :city_id, :country_id, presence: true
 
+
 end
