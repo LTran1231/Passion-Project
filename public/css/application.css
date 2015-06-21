@@ -57,6 +57,10 @@
   border: 1px solid #ddd;
 }
 
+#post-content {
+  display: none;
+}
+
 /*
 
 /*.nav {

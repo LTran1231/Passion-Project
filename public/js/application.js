@@ -1,8 +1,9 @@
 $(document).ready(function() {
 	searchButtonListener();
-	postLinkListener();
-
+	// postLinkListener();
 });
+
+
 // Search BTN
 var searchButtonListener = function(){
 	$('form.search-form').on('submit', function(event) {
@@ -14,12 +15,15 @@ var searchButtonListener = function(){
 			url: target.attr('action'),
 			type: target.attr('method'),
 			data_Type: 'Json',
-  		data: target.serialize(),
+			data: target.serialize(),
 		})
 
 		request.done(function(response) {
 			$('.city').html(response);
-			$('.post #post-content').hide();
+			$('.post-content').hide();
+			$('.link-post').on('click', function(){
+				$(this).parent().children('.post-content').slideToggle();
+			});
 		})
 
 		request.fail(function(response){
@@ -29,24 +33,6 @@ var searchButtonListener = function(){
 	})
 }
 
-var postLinkListener = function(){
-	$('#link-post').on('click', function(event) {
-		event.preventDefault();
-		var url = $(event.target)
-		debugger
-		var request = $.ajax({
-			url: url,
-			type: 'GET',
-		})
-		request.done(function(response) {
-			console.log(response);
-		})
-		request.fail(function(response) {
-			console.log(response);
-			alert("FAIL");
-		})
-	})
-}
 
 
 

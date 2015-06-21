@@ -1,9 +1,12 @@
 <% if @search_city %>
   <% @search_city.posts.each do |post| %>
   <li class="post">
-    <strong id="link-post"><a href="/posts/<%= post.id %>/content" ><%= post.title %></a></strong>
-    </br><a href="/profile/<%= post.user_id %>"><%= post.user.name %></a>
-    <span id="post-content"><%= post.content %></span>
+    <div class="link-post">
+      <strong>
+        <a href="/posts/<%= post.id %>/content" ><%= post.title %></a></strong>
+      </br><a href="/profile/<%= post.user_id %>"><%= post.user.name %></a>
+    </div>
+    <span class="post-content"><%= post.content %></span>
   </li>
   <% end %>
 <% end %>
