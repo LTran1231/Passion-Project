@@ -3,7 +3,6 @@ $(document).ready(function() {
 	// postLinkListener();
 });
 
-
 // Search BTN
 var searchButtonListener = function(){
 	$('form.search-form').on('submit', function(event) {
@@ -31,7 +30,9 @@ var searchButtonListener = function(){
 			alert("Fail");
 		})
 	})
-}
+};
+
+
 
 
 
