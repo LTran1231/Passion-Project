@@ -90,7 +90,11 @@
 }
 
 .add-new-post {
-  display: none
+  display: none;
+}
+
+.edit-post-form {
+  /*display: none;*/
 }
 
 /*  color: #333;

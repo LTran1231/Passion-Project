@@ -4,6 +4,7 @@ $(document).ready(function() {
 	editProfileButtonListener();
 	showNewPostForm();
 	addNewPostButtonListener();
+	showEditPostForm();
 });
 
 // SEARCH BTN
@@ -39,10 +40,13 @@ var searchButtonListener = function(){
 var showEditProfileForm = function(){
 	$('.profile-columns').on('click', '#edit-profile', function(event) {
 		event.preventDefault();
-		console.log(event);
+
 		var target = $(event.target);
-		target.closest('.profile-columns').find('.edit-profile-form').show();
 		target.closest('.profile-columns').find('.display-all-posts').hide();
+		target.closest('.profile-columns').find('.add-new-post').hide();
+		target.closest('.profile-columns').find('.edit-profile-form').show();
+
+
 	})
 };
 
@@ -60,10 +64,11 @@ var editProfileButtonListener = function(){
 		})
 
 		request.done(function(response) {
-			console.log(response);
 			target.closest('.profile-columns').replaceWith(response);
-			target.closest('.profile-columns').find('.edit-profile-form').hide();
 			target.closest('.profile-columns').find('.display-all-posts').show();
+			target.closest('.profile-columns').find('.edit-profile-form').hide();
+
+
 
 		})
 
@@ -78,13 +83,16 @@ var editProfileButtonListener = function(){
 var showNewPostForm = function(){
 	$('.profile-columns').on('click', '#new-post', function(event) {
 		event.preventDefault();
-		console.log(event);
+
 		var target = $(event.target);
-		target.closest('.profile-columns').find('.add-new-post').show();
 		target.closest('.profile-columns').find('.display-all-posts').hide();
+		target.closest('.profile-columns').find('.edit-profile-form').hide();
+		target.closest('.profile-columns').find('.add-new-post').show();
+
 	})
 };
 
+// ADD NEW POST 
 var addNewPostButtonListener = function(){
 	$('form.new-post-form').on('submit', function(event){
 		event.preventDefault();
@@ -98,7 +106,9 @@ var addNewPostButtonListener = function(){
 		})
 
 		request.done(function(response){
-			console.log(response);
+			target.closest('.profile-columns').replaceWith(response);
+			target.closest('.profile-columns').find('.add-new-post').hide();
+			target.closest('.profile-columns').find('.display-all-posts').show();
 
 		})
 		request.fail(function(response){
@@ -107,6 +117,19 @@ var addNewPostButtonListener = function(){
 		})
 	})
 }
+
+// SHOW/HIDE EDIT POST FORM
+var showEditPostForm = function(){
+	$('.profile-columns').on('submit', '.edit-post-form', function(event) {
+		event.preventDefault();
+
+		var target = $(event.target);
+		target.closest('.profile-columns').find('.display-all-posts').hide();
+		target.closest('.profile-columns').find('.add-new-post').hide();
+		target.closest('.profile-columns').find('#edit-post').show();
+
+	})
+};
 
 
 

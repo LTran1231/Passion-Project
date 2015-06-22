@@ -3,7 +3,7 @@
 		<ul class="profile-info">
 			<% if @user == current_user %>
 			<li><a id="edit-profile" href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
-			<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
+			<li><a id="new-post" href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
 			<% end %>
 
 			<li>Name: <%= @user.name %></li>
@@ -16,10 +16,8 @@
 	</aside>
 
 	<article class="profile-three-fourth-right">
-		<!-- PROFILE EDIT AND LIST OF POSTS -->
-		<div class="edit-profile-form">
-			<%= erb :"/profile/edit", layout: false %>
-		</div>
+		
+
 
 		<% sort_posts_by_date(@user.posts).each do |post| %>
 		<div class="display-all-posts panel-default">
@@ -27,15 +25,17 @@
 			<div class="panel-heading">
 				<strong><%= post.title %></strong>
 				<p>submitted <%= date_count(post).to_i %> day(s) ago</p>
-			</div>
 
-			<div class="pull-left">
-				<% if @user == current_user %>
-				<%= erb :"/sessions/_button", :layout => false, 
-				:locals => { action: "/posts/#{post.id}/edit", 
-				method: "GET", value: "Edit" } %>
-				<% end %>
+				<div class="edit-post-form">
+					<% if @user == current_user %>
+					<%= erb :"/sessions/_button", :layout => false, 
+					:locals => { action: "/posts/#{post.id}/edit", 
+					method: "GET", value: "Edit" } %>
+					<% end %>
+				</div>
 			</div>
+			<span class="glyphicons glyphicons-pen"></span>
+				
 
 			<div class="panel-body">
 				<li><%= post.city.city.capitalize if !post.city_id.nil? %>, <%= post.country.country.capitalize if !post.country_id.nil? %></li>
@@ -45,7 +45,14 @@
 		</div>
 		<% end %>
 
-<!-- ADD AND EDIT NEW POST -->
+
+<!-- PROFILE EDIT AND LIST OF POSTS -->
+
+	<div class="edit-profile-form">
+		<%= erb :"/profile/edit", layout: false %>
+	</div>
+
+<!-- ADD NEW POST -->
 
 	<div class="add-new-post">
 		<%= erb :"posts/new", layout: false %>
