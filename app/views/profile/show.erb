@@ -26,7 +26,7 @@
 				<strong><%= post.title %></strong>
 				<p>submitted <%= date_count(post).to_i %> day(s) ago</p>
 
-				<div class="edit-post-form">
+				<div>
 					<% if @user == current_user %>
 					<%= erb :"/sessions/_button", :layout => false, 
 					:locals => { action: "/posts/#{post.id}/edit", 
@@ -57,6 +57,10 @@
 	<div class="add-new-post">
 		<%= erb :"posts/new", layout: false %>
 	</div>
+
+<!-- END OF POSTS -->
+
+
 	</article>
 
 </div>

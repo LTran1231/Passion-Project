@@ -22,16 +22,10 @@ post '/posts/:id/new' do
 end
 
 get '/posts/:id/edit' do
-  # @user = User.where(id: params[:id]).first
-  # if @user == current_user
-  #   erb :"profile/show", layout: false, locals: { user: @user }
-  # end
   p params
-  @post = Post.find(params[:id])
-  p params
-  p "8"*100
-
-  erb :"posts/edit", locals: {post: @post}, layout: false
+  p "*"*100
+  post = Post.find(params[:id])
+  erb :"posts/edit", locals: {post: post}, layout: false
     # erb :"/posts/edit"
 end
 
