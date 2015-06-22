@@ -4,7 +4,7 @@ $(document).ready(function() {
 	editProfileButtonListener();
 	showNewPostForm();
 	addNewPostButtonListener();
-	showEditPostForm();
+	// showEditPostForm();
 });
 
 // SEARCH BTN
@@ -119,17 +119,17 @@ var addNewPostButtonListener = function(){
 }
 
 // SHOW/HIDE EDIT POST FORM
-var showEditPostForm = function(){
-	$('.profile-columns').on('submit', '.edit-post-form', function(event) {
-		event.preventDefault();
+// var showEditPostForm = function(){
+// 	$('.profile-columns').on('submit', '#edit-post-link', function(event) {
+// 		event.preventDefault();
 
-		var target = $(event.target);
-		target.closest('.profile-columns').find('.display-all-posts').hide();
-		target.closest('.profile-columns').find('.add-new-post').hide();
-		target.closest('.profile-columns').find('#edit-post').show();
+// 		var target = $(event.target);
+// 		target.closest('.profile-columns').find('.display-all-posts').hide();
+// 		target.closest('.profile-columns').find('.add-new-post').hide();
+// 		target.closest('.profile-columns').find('.edit-post-form').show();
 
-	})
-};
+// 	})
+// };
 
 
 

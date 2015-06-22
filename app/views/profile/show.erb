@@ -28,13 +28,11 @@
 
 				<div>
 					<% if @user == current_user %>
-					<%= erb :"/sessions/_button", :layout => false, 
-					:locals => { action: "/posts/#{post.id}/edit", 
-					method: "GET", value: "Edit" } %>
+					<a id="edit-post-link" href="/posts/<%= post.id %>/edit">Edit</a>
 					<% end %>
 				</div>
 			</div>
-			<span class="glyphicons glyphicons-pen"></span>
+
 				
 
 			<div class="panel-body">

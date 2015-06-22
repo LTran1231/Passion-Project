@@ -7,9 +7,6 @@ end
 
 get '/profile/:id/edit' do
 	@user = User.find_by(id: params[:id])
-		p params 
-	p "*" * 100
-	p @user
 	erb :"/profile/#{current_user.id}", layout: false
 end
 

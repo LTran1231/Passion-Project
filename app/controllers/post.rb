@@ -21,11 +21,11 @@ post '/posts/:id/new' do
   end
 end
 
-get '/posts/:id/edit' do
-  p params
-  p "*"*100
-  post = Post.find(params[:id])
-  erb :"posts/edit", locals: {post: post}, layout: false
+get '/posts/:id/edit' do  
+  @user = current_user
+  @post = Post.find(params[:id])
+
+  erb :"profile/show", layout: false
     # erb :"/posts/edit"
 end
 
