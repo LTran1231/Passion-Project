@@ -42,9 +42,9 @@ var showEditProfileForm = function(){
 		event.preventDefault();
 
 		var target = $(event.target);
+		target.closest('.profile-columns').find('.edit-profile-form').show();
 		target.closest('.profile-columns').find('.display-all-posts').hide();
 		target.closest('.profile-columns').find('.add-new-post').hide();
-		target.closest('.profile-columns').find('.edit-profile-form').show();
 
 
 	})
@@ -85,9 +85,9 @@ var showNewPostForm = function(){
 		event.preventDefault();
 
 		var target = $(event.target);
+		target.closest('.profile-columns').find('.add-new-post').show();
 		target.closest('.profile-columns').find('.display-all-posts').hide();
 		target.closest('.profile-columns').find('.edit-profile-form').hide();
-		target.closest('.profile-columns').find('.add-new-post').show();
 
 	})
 };
@@ -107,8 +107,8 @@ var addNewPostButtonListener = function(){
 
 		request.done(function(response){
 			target.closest('.profile-columns').replaceWith(response);
-			target.closest('.profile-columns').find('.add-new-post').hide();
 			target.closest('.profile-columns').find('.display-all-posts').show();
+			target.closest('.profile-columns').find('.add-new-post').hide();
 
 		})
 		request.fail(function(response){
@@ -116,7 +116,7 @@ var addNewPostButtonListener = function(){
 			alert("FAIL");
 		})
 	})
-}
+};
 
 // SHOW/HIDE EDIT POST FORM
 var showEditPostForm = function(){

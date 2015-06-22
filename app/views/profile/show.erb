@@ -17,6 +17,19 @@
 
 	<article class="profile-three-fourth-right">
 		
+<!-- PROFILE EDIT AND LIST OF POSTS -->
+
+		<div class="edit-profile-form">
+			<%= erb :"/profile/edit", layout: false %>
+		</div>
+
+<!-- ADD NEW POST -->
+
+		<div class="add-new-post">
+			<%= erb :"posts/new", layout: false %>
+		</div>
+
+<!-- END OF POSTS -->
 
 
 		<% sort_posts_by_date(@user.posts).each do |post| %>
@@ -48,19 +61,7 @@
 		<% end %>
 
 
-<!-- PROFILE EDIT AND LIST OF POSTS -->
 
-	<div class="edit-profile-form">
-		<%= erb :"/profile/edit", layout: false %>
-	</div>
-
-<!-- ADD NEW POST -->
-
-	<div class="add-new-post">
-		<%= erb :"posts/new", layout: false %>
-	</div>
-
-<!-- END OF POSTS -->
 
 
 	</article>

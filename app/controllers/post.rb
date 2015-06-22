@@ -22,7 +22,7 @@ post '/posts/:id/new' do
 end
 
 get '/posts/:id/edit' do  
-  @user = current_user
+
   post = Post.find(params[:id])
 
   erb :"posts/edit", layout: false,
