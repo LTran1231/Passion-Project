@@ -1,10 +1,11 @@
 <div class="profile-columns">
 	<aside class="one-fourth-left">
-		<ul class="list-unstyled">
+		<ul class="profile-info">
 			<% if @user == current_user %>
-			<li><a href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
+			<li><a id="edit-profile" href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
 			<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
 			<% end %>
+
 			<li>Name: <%= @user.name %></li>
 			<li>Email: <%= @user.email %></li>
 			<li>Gender <%= @user.gender %></li>
@@ -15,12 +16,17 @@
 	</aside>
 
 	<article class="profile-three-fourth-right">
-		<div class="panel panel-default">
-			<% sort_posts_by_date(@user.posts).each do |post| %>
+		<!-- PROFILE EDIT AND LIST OF POSTS -->
+		<div class="edit-profile-form">
+			<%= erb :"/profile/edit", layout: false %>
+		</div>
+
+		<% sort_posts_by_date(@user.posts).each do |post| %>
+		<div class="display-all-posts panel-default">
 			
 			<div class="panel-heading">
 				<strong><%= post.title %></strong>
-				<p>submitted <%= date_count(post).to_i %> ago</p>
+				<p>submitted <%= date_count(post).to_i %> day(s) ago</p>
 			</div>
 
 			<div class="pull-left">
@@ -36,7 +42,24 @@
 				<li>Travel on <%= post.travel_date %></li>
 				<li><%= post.content %></li> 
 			</div>
-			<% end %>
 		</div>
+		<% end %>
+
+<!-- ADD AND EDIT NEW POST -->
+
+	<div class="add-new-post">
+		<%= erb :"posts/new", layout: false %>
+	</div>
 	</article>
+
 </div>
+
+
+
+
+
+
+
+
+
+

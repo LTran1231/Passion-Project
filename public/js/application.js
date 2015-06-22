@@ -1,9 +1,12 @@
 $(document).ready(function() {
 	searchButtonListener();
-	// postLinkListener();
+	showEditProfileForm();
+	editProfileButtonListener();
+	showNewPostForm();
+	addNewPostButtonListener();
 });
 
-// Search BTN
+// SEARCH BTN
 var searchButtonListener = function(){
 	$('form.search-form').on('submit', function(event) {
 		event.preventDefault();
@@ -31,6 +34,79 @@ var searchButtonListener = function(){
 		})
 	})
 };
+
+// SHOW AND HIDE EDIT FORM IN THE PROFILE PAGE
+var showEditProfileForm = function(){
+	$('.profile-columns').on('click', '#edit-profile', function(event) {
+		event.preventDefault();
+		console.log(event);
+		var target = $(event.target);
+		target.closest('.profile-columns').find('.edit-profile-form').show();
+		target.closest('.profile-columns').find('.display-all-posts').hide();
+	})
+};
+
+// EDIT PROFILE
+var editProfileButtonListener = function(){
+	$('form#edit-profile-form').on('submit', function(event){
+		event.preventDefault();
+
+		var target = $(event.target);
+
+		var request = $.ajax({
+			url: target.attr('action'),
+			type: 'PUT',
+			data: target.serialize(),
+		})
+
+		request.done(function(response) {
+			console.log(response);
+			target.closest('.profile-columns').replaceWith(response);
+			target.closest('.profile-columns').find('.edit-profile-form').hide();
+			target.closest('.profile-columns').find('.display-all-posts').show();
+
+		})
+
+		request.fail(function(response) {
+			console.log(response);
+			alert("FAIL");
+		})
+	})
+};
+
+// SHOW/HIDE NEW POST FORM IN THE PROFILE PAGE
+var showNewPostForm = function(){
+	$('.profile-columns').on('click', '#new-post', function(event) {
+		event.preventDefault();
+		console.log(event);
+		var target = $(event.target);
+		target.closest('.profile-columns').find('.add-new-post').show();
+		target.closest('.profile-columns').find('.display-all-posts').hide();
+	})
+};
+
+var addNewPostButtonListener = function(){
+	$('form.new-post-form').on('submit', function(event){
+		event.preventDefault();
+
+		var target = $(event.target);
+
+		var request = $.ajax({
+			url: target.attr('action'),
+			type: target.attr('method'),
+			data: target.serialize(),
+		})
+
+		request.done(function(response){
+			console.log(response);
+
+		})
+		request.fail(function(response){
+			console.log(response);
+			alert("FAIL");
+		})
+	})
+}
 
 
 

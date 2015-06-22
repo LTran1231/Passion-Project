@@ -13,10 +13,11 @@ post '/posts/:id/new' do
   country = Country.find_or_create(country: params[:country])
   new_post = user.posts.new(params[:post].merge!(city_id: city.id).merge!(country_id: country.id))
   if new_post.save
-  	redirect "/profile/#{current_user.id}"
+    erb :"profile/show", layout: false
+  	# redirect "/profile/#{current_user.id}"
   else
-  	@errors = new_post.errors.full_messages
-  	erb :"/posts/new"
+    status 400
+    new_post.errors.full_messages.join("\n")
   end
 end
 
