@@ -29,6 +29,10 @@
 				<div>
 					<% if @user == current_user %>
 					<a id="edit-post-link" href="/posts/<%= post.id %>/edit">Edit</a>
+					<div class="edit-post-form">
+						<%= erb :"posts/edit", locals: {post: post}, layout: false %>
+					</div>
+
 					<% end %>
 				</div>
 			</div>

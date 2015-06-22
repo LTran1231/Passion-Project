@@ -23,9 +23,11 @@ end
 
 get '/posts/:id/edit' do  
   @user = current_user
-  @post = Post.find(params[:id])
+  post = Post.find(params[:id])
 
-  erb :"profile/show", layout: false
+  erb :"posts/edit", layout: false,
+                     locals: { post: post } 
+
     # erb :"/posts/edit"
 end
 
