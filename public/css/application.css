@@ -1,6 +1,79 @@
+/* MODAL SIGN IN / SIGN UP */
+#lean_overlay {
+  position: fixed;
+  z-index:100;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: #000;
+  display: none;
+}
 
+/* Modal box or Popup box */
+.popupContainer{
+  display: none;
+  position:absolute;
+  width:330px;  
+  height: auto;
+  left:45%;
+  top:80px;
+  background: #FFF;
+}
 
-/* SEARCH CSS */
+#modal_trigger {
+  margin: 100px auto;
+  width: 100px;
+  display: block;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #F4F4F2;
+}
+
+.btn:hover {
+  background: #E4E4E2;
+}
+
+/* Popup Style */
+.popupHeader {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.popupHeader {
+  background: #F4F4F2;
+  position: relative;
+  padding: 10px 20px;
+  border-bottom: 1px solid #DDD;
+  font-weight: bold;
+}
+
+.popupHeader .modal_close  {
+    position:  absolute;
+     right:  0;
+     top: 0;
+     padding: 10px 15px;
+     background: #E4E4E2;
+     cursor:  pointer;
+     color: #aaa;
+     font-size: 16px;
+}
+ 
+.popupBody  {
+    padding: 20px;
+}
+
+.user_login {
+  display: none;
+}
+
+.user_register {
+  display: none;
+}
+
+/* SEARCH CSS <<-----------------------------------------------*/
 .search {
   /* background: rgba(0,0,0,0.6); */
   /* position: absolute; */
@@ -23,16 +96,16 @@
   width: 30%;
 }
 .search-form {
-   width: 50%;
-   /* padding-top: 0; */
-   /* padding-bottom: 0; */
-   /* margin-right: 0; */
-   /* margin-left: 0; */
-   /* border: 0; */
-   -webkit-box-shadow: none;
+  width: 50%;
+ /* padding-top: 0; */
+ /* padding-bottom: 0; */
+ /* margin-right: 0; */
+ /* margin-left: 0; */
+ /* border: 0; */
+  -webkit-box-shadow: none;
 
-   /* box-shadow: none; */
-   display: inline-flex;
+ /* box-shadow: none; */
+  display: inline-flex;
 }
 
 .search-results {
@@ -57,23 +130,24 @@
   border: 1px solid #ddd;
 }
 
-/*  PROFILE PAGE */
+
+/*  PROFILE PAGE <<-----------------------------------------------*/
 .one-fourth-left {
-    width: 25%;   
-    padding-right: 10px;   
-    padding-left: 10px;
+  width: 25%;   
+  padding-right: 10px;   
+  padding-left: 10px;
 }
 
 .profile-three-fourth-right {
-    float: left;   
-    padding-right: 10px;   
-    padding-left: 10px;
-    width: 75%;
+  float: left;   
+  padding-right: 10px;   
+  padding-left: 10px;
+  width: 75%;
 }
 
 .profile-columns {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
 .edit-profile-form{
@@ -86,7 +160,7 @@
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
 .add-new-post {

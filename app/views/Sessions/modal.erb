@@ -1,0 +1,17 @@
+
+<div id="modal" class="popupContainer">
+ <header class="popupHeader">
+ <span class="header_title">Login</span>
+ <span class="modal_close"><i class="fa fa-times"></i></span>
+ </header>
+ 
+    <section class="popupBody">
+    	<div class="user_login">
+				<%= erb :"/sessions/signin", :layout => false %>
+			</div>
+
+			<div class="user_register">
+				<%= erb :"/sessions/signup", :layout => false %>
+			</div>
+    </section>
+</div>

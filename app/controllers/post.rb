@@ -10,8 +10,8 @@ end
 
 post '/posts/:id/new' do
   @user = User.find(params[:id])
-  city = City.find_or_create(city: params[:city])
-  country = Country.find_or_create(country: params[:country])
+  city = find_or_create(city: params[:city])
+  country = find_or_create(country: params[:country])
   new_post = @user.posts.new(params[:post].merge!(city_id: city.id).merge!(country_id: country.id))
   if new_post.save
     erb :"profile/show", locals: { user: @user }, layout: false

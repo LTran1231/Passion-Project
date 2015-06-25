@@ -1,6 +1,6 @@
 ## LOGIN/LOGOUT
 get '/signin' do
-	erb :"sessions/signin"
+	erb :"sessions/modal"
 end
 
 post '/signin' do
