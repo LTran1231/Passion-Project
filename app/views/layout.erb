@@ -7,7 +7,7 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/css/bootstrap.css">
-
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/css/normalize.css">
 
   <!--
@@ -16,30 +16,26 @@
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+  
   <script src="/js/application.js"></script>
 
   <title></title>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-static-top">
-    <div class="user">
-      <% if current_user %>
-      Hello, <a href="/profile/<%= current_user.id %>"><%= current_user.name %></a>
-      <a href="/signout">Sign Out</a>
-      <% else %>
-      <a href="/signin">Sign In</a>
-      <a href="/signup">Sign Up</a>
-      <% end %>
-    </div>
-  </nav>
 
-  <ul class="nav nav-tabs">
+  <nav class="nav nav-tabs">
     <li role="presentation"><a href="/">Home</a></li>
     <% if current_user %>
-    <li role="presentation"><a href="/profile/<%= current_user.id %>">Profile</a></li>
-    <!-- <li role="presentation"><a href="#">Messages</a></li> -->
+    <li role="presentation"><a href="/signout">Sign Out</a></li>
+    <li role="presentation"><a href="/profile/<%= current_user.id %>"><%= current_user.name %></a></li>
+    <% else %>
+    
+    <li role="presentation"><a id="modal_trigger" href="/signin">Sign In</a></li>
+    <li role="presentation"><a href="/signup">Sign Up</a></li>
     <% end %>
-  </ul>
+  </nav>
+
 
 
 

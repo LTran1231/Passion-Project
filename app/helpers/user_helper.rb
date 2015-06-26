@@ -12,7 +12,9 @@ helpers do
   	posts.all.order(created_at: :DESC) 
   end
 
-
+  def date_count(post)
+  	(Time.now - post.updated_at.to_time)/1.day
+  end
 end
 
 

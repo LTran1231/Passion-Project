@@ -1,50 +1,79 @@
-
-<div class="pull-left">
-	<ul class="list-unstyled">
-		<% if @user == current_user %>
-		<li><a href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
-		<li><a href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
-		<% end %>
-		<li>Name: <%= @user.name %></li>
-		<li>Email: <%= @user.email %></li>
-		<li>Gender <%= @user.gender %></li>
-		<li>From: <%= @user.hometown %></li>
-		<li>Places i've been: <%= @user.travel_destinations %></li>
-		<li><%= @user.description %></li>
-	</ul>
-</div>
-
-<div class="pull-left">
-	<div class="container">
-		<% sort_posts_by_date(@user.posts).each do |post| %>
-		<div class="pull-right">
+<div class="profile-columns">
+	<aside class="one-fourth-left">
+		<ul class="profile-info">
 			<% if @user == current_user %>
-			<%= erb :"/sessions/_button", :layout => false, 
-																		:locals => { action: "/posts/#{post.id}/edit", 
-													 											 method: "GET", value: "Edit" } %>
+			<li><a id="edit-profile" href="/profile/<%= current_user.id %>/edit">Edit My Profile</a></li>
+			<li><a id="new-post" href="/posts/<%= current_user.id %>/new">Add Trip</a></li>
 			<% end %>
+
+			<li>Name: <%= @user.name %></li>
+			<li>Email: <%= @user.email %></li>
+			<li>Gender <%= @user.gender %></li>
+			<li>From: <%= @user.hometown %></li>
+			<li>Places i've been: <%= @user.travel_destinations %></li>
+			<li><%= @user.description %></li>
+		</ul>
+	</aside>
+
+	<article class="profile-three-fourth-right">
+		
+<!-- PROFILE EDIT AND LIST OF POSTS -->
+
+		<div class="edit-profile-form">
+			<%= erb :"/profile/edit", layout: false %>
 		</div>
-		<dl class="dl-horizontal">
 
-			<dt>Title</dt>
-			<dd><%= post.title %> 
-			<p>posted at: <%= Date.parse(post.updated_at.to_s) %></p></dd>
+<!-- ADD NEW POST -->
 
-			<dt>City</dt>
-			<dd><%= post.city.city if !post.city_id.nil? %></dd>
+		<div class="add-new-post">
+			<%= erb :"posts/new", layout: false %>
+		</div>
 
-			<dt>Country</dt>
-			<dd><%= post.country.country if !post.country_id.nil? %></dd>
+<!-- END OF POSTS -->
 
-			<dt>Travel date</dt>
-			<dd><%= post.travel_date %></dd>
 
-			<dt>My experience</dt>
-			<dd><%= post.content %></dd> 
+		<% sort_posts_by_date(@user.posts).each do |post| %>
+		<div class="display-all-posts panel-default">
+			
+			<div class="panel-heading">
+				<strong><%= post.title %></strong>
+				<p>submitted <%= date_count(post).to_i %> day(s) ago</p>
 
-		</dl>
+				<div>
+					<% if @user == current_user %>
+					<a id="edit-post-link" href="/posts/<%= post.id %>/edit">Edit</a>
+					<div class="edit-post-form">
+						<%= erb :"posts/edit", locals: {post: post}, layout: false %>
+					</div>
+
+					<% end %>
+				</div>
+			</div>
+
+				
+
+			<div class="panel-body">
+				<li><%= post.city.city.capitalize if !post.city_id.nil? %>, <%= post.country.country.capitalize if !post.country_id.nil? %></li>
+				<li>Travel on <%= post.travel_date %></li>
+				<li><%= post.content %></li> 
+			</div>
+		</div>
 		<% end %>
 
-	</div>
+
+
+
+
+	</article>
+
 </div>
+
+
+
+
+
+
+
+
+
 

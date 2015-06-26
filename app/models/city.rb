@@ -5,7 +5,7 @@ class City < ActiveRecord::Base
   
   validates :city, presence: true
 
-  def self.find_or_create(attributes)
+  def find_or_create(attributes)
 		self.where(attributes).first || self.create(attributes)
 	end
 

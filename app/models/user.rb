@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :posts
 
 	before_save { email.downcase! }
-	before_save { name.downcase! }
 
 	validates :name, presence: true,  length: { maximum: 50 }
 
@@ -16,8 +15,16 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 
+	def self.create_from_facebook(access_token)
+    profile = FaceBook.user_profile(access_token)
+    p profile
+    name = "#{profile["first_name"]} #{profile["last_name"]}"
+    p name 
 
-  def password
+    self.create(facebook_token: access_token, name: name)
+  end
+
+  def passwords
     @password ||= Password.new(password_digest)
   end
 
@@ -27,21 +34,4 @@ class User < ActiveRecord::Base
   end
 
 end
-
-# HAS_SECURE_PASSWORD
-# password must be presence
-# password length must be less than or equal to 72 characters
-# confirmation of password that is build in with "password_confirmation" attribute
-
-# Methods included in Active Record
-# user.save                                                       # => false, password required
-# user.password = 'mUc3m00RsqyRe'
-# user.save                                                       # => false, confirmation doesn't match
-# user.password_confirmation = 'mUc3m00RsqyRe'
-# user.save                                                       # => true
-# user.authenticate('notright')                                   # => false
-# user.authenticate('mUc3m00RsqyRe')                              # => user
-# User.find_by(name: 'david').try(:authenticate, 'notright')      # => false
-# User.find_by(name: 'david').try(:authenticate, 'mUc3m00RsqyRe') # => user
-
 
