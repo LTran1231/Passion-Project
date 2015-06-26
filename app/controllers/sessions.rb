@@ -1,6 +1,6 @@
 ## LOGIN/LOGOUT
 get '/signin' do
-	erb :"sessions/modal"
+	erb :"sessions/signin"
 end
 
 post '/signin' do
@@ -36,6 +36,22 @@ post '/signup' do
 		erb :"sessions/signup"
 	end
 end
+
+## SIGNUP WITH FACEBOOK
+get '/facebook' do
+	redirect FaceBook.authorization_url
+end
+
+get '/oauth' do
+	access_token = FaceBook.get_access_token(params["code"])
+  user = User.create_from_facebook(access_token)
+  redirect "/profile/#{user.id}"
+end
+
+
+
+
+
 
 
 

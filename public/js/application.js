@@ -5,34 +5,34 @@ $(document).ready(function() {
 	showNewPostForm();
 	addNewPostButtonListener();
 	showEditPostForm();
-	modalTrigger();
-	callingSignInForm();
-	callingSignUpForm();
+	// modalTrigger();
+	// callingSignInForm();
+	// callingSignUpForm();
 
 });
 
-var modalTrigger = function(){
-	$("#modal_trigger").leanModal({
-	 	top : 200, 
-	 	overlay : 0.6, 
-	 	closeButton: ".modal_close" 
-	});
-}
+// var modalTrigger = function(){
+// 	$("#modal_trigger").leanModal({
+// 	 	top : 200, 
+// 	 	overlay : 0.6, 
+// 	 	closeButton: ".modal_close" 
+// 	});
+// }
 
-var callingSignInForm = function(){
-	$('.signin_form').on('click', function(){
-		$('.user_login').show();
-		return false;
-	})
-};
+// var callingSignInForm = function(){
+// 	$('.signin_form').on('click', function(){
+// 		$('.user_login').show();
+// 		return false;
+// 	})
+// };
 
-var callingSignUpForm = function(){
-	$('.signup').on('click', function(){
-		$('.signup').show();
-		$('.header_title').text('Register');
-		return false;
-	})
-};
+// var callingSignUpForm = function(){
+// 	$('.signup').on('click', function(){
+// 		$('.signup').show();
+// 		$('.header_title').text('Register');
+// 		return false;
+// 	})
+// };
 
 
 // SEARCH BTN
@@ -50,6 +50,7 @@ var searchButtonListener = function(){
 		})
 
 		request.done(function(response) {
+			console.log(response);
 			$('.city').html(response);
 			$('.post-content').hide();
 			$('.link-post').on('click', function(){
