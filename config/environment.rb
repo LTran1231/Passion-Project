@@ -22,6 +22,8 @@ require 'erb'
 
 require 'bcrypt'
 
+require 'awesome_print'
+
 require 'dotenv'
 Dotenv.load
 
@@ -50,8 +52,10 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
-FaceBook.setup(
+Facebook.setup(
 	:key => ENV['CLIENT_ID'], 
 	:secret => ENV['CLIENT_SECRET'], 
-	:redirect_uri => 'http://localhost:9393/oauth')
+  :redirect_uri => 'http://localhost:9393/oauth',
+  :scope => 'email,user_birthday,read_stream'
+  )
 

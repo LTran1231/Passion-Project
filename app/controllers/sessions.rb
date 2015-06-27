@@ -39,12 +39,15 @@ end
 
 ## SIGNUP WITH FACEBOOK
 get '/facebook' do
-	redirect FaceBook.authorization_url
+	redirect Facebook.authorization_url
 end
 
 get '/oauth' do
-	access_token = FaceBook.get_access_token(params["code"])
-  user = User.create_from_facebook(access_token)
+	p access_token = Facebook.get_access_token(params["code"])
+	p "*" * 100
+  p user = User.create_from_facebook(access_token)
+  p "l" *100
+  session[:user_id] = user.id
   redirect "/profile/#{user.id}"
 end
 

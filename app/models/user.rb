@@ -16,12 +16,20 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }
 
 	def self.create_from_facebook(access_token)
-    profile = FaceBook.user_profile(access_token)
+    profile = Facebook.user_profile(access_token)
+    p "P" *100
     p profile
     name = "#{profile["first_name"]} #{profile["last_name"]}"
+    email = "#{profile["email"]}"
+    password = "#{profile["password"]}"
+    p "N" *100
     p name 
-
-    self.create(facebook_token: access_token, name: name)
+    existing_user = self.where(email: email).first
+    if existing_user
+      return existing_user
+    else
+      self.create(facebook_token: access_token, name: name, email: email, password: password)
+    end
   end
 
   def passwords

@@ -21,6 +21,9 @@ gem 'dotenv'
 
 gem 'httparty'
 
+gem 'awesome_print'
+
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
@@ -31,6 +34,8 @@ end
 group :test, :development do
   gem 'factory_girl'
   gem 'faker'
+  gem 'pry'
+  gem 'pry-byebug'
 end
 
 
